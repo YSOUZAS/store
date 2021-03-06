@@ -9,6 +9,6 @@ namespace Store.DataAccess.Repositories.Interfaces
     {
         Task<IEnumerable<Product>> GetProductsBySupplier(Guid supplierId);
         Task<IEnumerable<Product>> GetProductsWithSuppliers();
-        Task<Product> GetProductWithSupplier(Guid SupplierId);
+        Task<Product> GetProductWithSupplier(Guid id);
     }
 }

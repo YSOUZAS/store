@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store.App.Data;
-using Store.DataAccess.Context;
+using Store.DataAccess.Extensions;
 
 namespace Store.App
 {
@@ -23,10 +23,7 @@ namespace Store.App
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<StoreContext>(options =>
-                   options.UseSqlServer(
-                       Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDatabaseDeveloperPageExceptionFilter();
+            services.AddStoreContext(Configuration);
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -36,6 +33,10 @@ namespace Store.App
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.RegisterStoreContext();
+            services.RegisterRepositories();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
