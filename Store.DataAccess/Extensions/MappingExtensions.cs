@@ -18,11 +18,16 @@ namespace Store.DataAccess.Extensions
             builder.Property(p => p.CreateAt).ValueGeneratedOnAdd();
         }
 
-        public static void CreateStringRequiredWithLengthhMapping<T>(this EntityTypeBuilder<T> builder, Expression<Func<T, string>> predicate, int length) where T : Entity
+        public static void CreateStringRequiredWithLengthMapping<T>(this EntityTypeBuilder<T> builder, Expression<Func<T, string>> predicate, int length) where T : Entity
         {
             builder.Property(predicate)
                    .IsRequired()
                    .HasColumnType($"varchar({length})");
+        }
+
+        public static void CreateNameMapping<T>(this EntityTypeBuilder<T> builder) where T : NamedEntity
+        {
+            builder.CreateStringRequiredWithLengthMapping(p => p.Name, 200);
         }
     }
 }

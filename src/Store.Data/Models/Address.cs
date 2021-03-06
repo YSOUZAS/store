@@ -2,7 +2,7 @@
 
 namespace Store.Data.Models
 {
-    public class Address
+    public class Address : Entity
     {
         public string Patio { set; get; }
         public string Number { set; get; }

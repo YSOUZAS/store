@@ -5,12 +5,8 @@ namespace Store.Data.Models
 {
     public class Supplier : NamedEntity
     {
-        public Supplier(string name, string document, SupplierType type, Address address, bool active) : base(name)
+        public Supplier(string name) : base(name)
         {
-            Document = document;
-            Type = type;
-            Address = address;
-            Active = active;
         }
 
         public string Document { set; get; }
