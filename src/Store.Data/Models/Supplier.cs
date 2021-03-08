@@ -5,6 +5,11 @@ namespace Store.Data.Models
 {
     public class Supplier : NamedEntity
     {
+        public Supplier() : base(string.Empty)
+        {
+
+        }
+
         public Supplier(string name) : base(name)
         {
         }

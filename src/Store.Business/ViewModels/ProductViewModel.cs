@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Store.App.ViewModels
+namespace Store.Business.ViewModels
 {
     public class ProductViewModel
     {
@@ -31,6 +32,10 @@ namespace Store.App.ViewModels
 
         [ScaffoldColumn(false)]
         public DateTime UpdateAt { get; set; }
+
+        [Required(ErrorMessage = "{0} is required.")]
+        [DisplayName("Supplier")]
+        public Guid SupplierId { get; set; }
 
         public SupplierViewModel Supplier { get; set; }
     }

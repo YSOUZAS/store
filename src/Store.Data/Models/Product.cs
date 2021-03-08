@@ -4,6 +4,11 @@ namespace Store.Data.Models
 {
     public class Product : NamedEntity
     {
+        public Product() : base(string.Empty)
+        {
+
+        }
+
         public Product(string name) : base(name)
         {
         }
