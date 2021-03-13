@@ -19,7 +19,7 @@ namespace Store.DataAccess.Repositories
             return await Find(p => p.SupplierId == supplierId);
         }
 
-        public async Task<IEnumerable<Product>> GetProductsWithSuppliers()
+        public async Task<IEnumerable<Product>> GetProductsWithSupplier()
         {
             return await db.AsNoTracking()
                            .Include(p => p.Supplier)

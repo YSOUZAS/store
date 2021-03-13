@@ -64,7 +64,6 @@ namespace Store.DataAccess.Repositories
 
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
     }
 }

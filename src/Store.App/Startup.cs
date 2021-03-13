@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Store.App.Extensions;
-using Store.Business;
+using Store.Business.Extensions;
 using Store.DataAccess.Extensions;
 
 namespace Store.App
@@ -29,6 +29,8 @@ namespace Store.App
 
             services.RegisterStoreContext();
             services.RegisterRepositories();
+            services.RegisterServices();
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

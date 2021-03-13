@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Store.Business.ViewModels;
 
 namespace Store.App.Data
 {
@@ -12,5 +10,7 @@ namespace Store.App.Data
             : base(options)
         {
         }
+        public DbSet<Store.Business.ViewModels.ProductViewModel> ProductViewModel { get; set; }
+        public DbSet<Store.Business.ViewModels.AddressViewModel> AddressViewModel { get; set; }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Store.App.Models;
-using System;
-using System.Collections.Generic;
+using Store.Business.Models;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Store.App.Controllers
 {
