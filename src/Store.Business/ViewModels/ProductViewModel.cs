@@ -17,7 +17,7 @@ namespace Store.Business.ViewModels
         [StringLength(1000, ErrorMessage = "The {0} field must be between {2} and {1} characters", MinimumLength = 2)]
         public string Description { set; get; }
 
-        //public IFormFile UploadImage { set; get; }
+        public IFormFile UploadImage { set; get; }
 
         public string Image { set; get; }
 

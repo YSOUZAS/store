@@ -12,16 +12,11 @@ namespace Store.DataAccess.Mappings
             builder.HasKey(p => p.Id);
 
             builder.HasOne(s => s.Address)
-                   .WithOne(a => a.Supplier)
-                   .OnDelete(DeleteBehavior.ClientSetNull);
-
+                   .WithOne(a => a.Supplier);
 
             builder.HasMany(s => s.Products)
                    .WithOne(p => p.Supplier)
-                   .HasForeignKey(p => p.SupplierId)
-                   .OnDelete(DeleteBehavior.ClientSetNull);
-
-
+                   .HasForeignKey(p => p.SupplierId);
 
             builder.CreateStringRequiredWithLengthMapping(p => p.Document, 14);
             builder.CreateNameMapping();

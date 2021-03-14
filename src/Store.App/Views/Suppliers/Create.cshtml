@@ -1,12 +1,12 @@
 ﻿@model Store.Business.ViewModels.SupplierViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "New Supplier";
 }
 
 <h1>Create</h1>
 
-<h4>SupplierViewModel</h4>
+<h4>@ViewData["Title"] </h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,7 +24,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Type" class="control-label"></label>
-                <input asp-for="Type" class="form-control" />
+                <input type="radio" value="1" asp-for="Type" checked class="form-control" /> Comum <br />
+                <input type="radio" value="2" asp-for="Type" class="form-control" /> Legal
                 <span asp-validation-for="Type" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -32,16 +33,21 @@
                     <input class="form-check-input" asp-for="Active" /> @Html.DisplayNameFor(model => model.Active)
                 </label>
             </div>
+
+            <h4>Address</h4>
+            <hr />
+
+            <partial name="./partials/_Address" />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                <a class="btn btn-info" asp-action="Index">Back to List</a>
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

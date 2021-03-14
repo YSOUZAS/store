@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Store.Business.ViewModels
@@ -40,9 +39,5 @@ namespace Store.Business.ViewModels
 
         [ScaffoldColumn(false)]
         public DateTime UpdateAt { get; set; }
-
-        [HiddenInput]
-        public Guid SupplierId { get; set; }
-        //public SupplierViewModel Supplier { get; set; }
     }
 }

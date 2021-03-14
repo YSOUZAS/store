@@ -10,12 +10,16 @@ namespace Store.DataAccess.Extensions
     {
         public static void CreateAtMapping<T>(this EntityTypeBuilder<T> builder) where T : Entity
         {
-            builder.Property(p => p.CreateAt).ValueGeneratedOnAdd();
+            builder.Property(p => p.CreateAt)
+                   .ValueGeneratedOnAdd()
+                   .HasDefaultValueSql("getdate()");
         }
 
         public static void UpdateAtMapping<T>(this EntityTypeBuilder<T> builder) where T : Entity
         {
-            builder.Property(p => p.UpdateAt).ValueGeneratedOnAddOrUpdate();
+            builder.Property(p => p.UpdateAt)
+                   .ValueGeneratedOnAddOrUpdate()
+                   .HasDefaultValueSql("getdate()");
         }
 
         public static void CreateStringRequiredWithLengthMapping<T>(this EntityTypeBuilder<T> builder, Expression<Func<T, string>> predicate, int length) where T : Entity
