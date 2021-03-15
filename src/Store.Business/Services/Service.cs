@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Store.Business.Interfaces;
+using Store.Business.ViewModels;
 using Store.Data.Models;
 using Store.DataAccess.Repositories.Interfaces;
 using System;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Store.Business.Services
 {
-    public abstract class Service<TEntityViewModel, TEntity> : IService<TEntityViewModel> where TEntity : Entity
+    public abstract class Service<TEntityViewModel, TEntity> : IService<TEntityViewModel> where TEntity : Entity where TEntityViewModel : BaseViewModel
     {
         protected readonly IRepository<TEntity> _repository;
         protected readonly IMapper _mapper;
@@ -27,7 +28,12 @@ namespace Store.Business.Services
 
         public async Task Update(TEntityViewModel entity)
         {
+            var dbEntity = await _repository.GetById(entity.Id);
             var entityToUpdate = _mapper.Map<TEntity>(entity);
+
+            entityToUpdate.UpdateAt = DateTime.Now;
+            entityToUpdate.CreateAt = dbEntity.CreateAt;
+
             await _repository.Update(entityToUpdate);
         }
 
